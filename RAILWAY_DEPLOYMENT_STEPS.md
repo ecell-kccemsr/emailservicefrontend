@@ -25,7 +25,8 @@ REACT_APP_API_URL = "https://your-railway-url.up.railway.app/api"
 
 - [ ] Go to railway.app
 - [ ] New Project → Deploy from GitHub
-- [ ] Set Root Directory: `backend`
+- [ ] Connect your organization's backend repo
+- [ ] **NO need to set Root Directory** (since your repo only contains backend)
 - [ ] Add all environment variables
 - [ ] Deploy and get URL
 - [ ] Update frontend configuration
