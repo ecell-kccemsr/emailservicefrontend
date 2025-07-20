@@ -1,6 +1,7 @@
 import React, { useState, ReactNode } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import Logo from "../common/Logo";
 import {
   LayoutDashboard,
   Users,
@@ -63,18 +64,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         }`}
       >
         <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200">
-          <div className="flex items-center space-x-2">
-            <div >
-              <img
-                src="./logo1.png"
-                alt="E-Cell Logo"
-                className="h-16 w-16"
-              />
-            </div>
-            <span className="text-lg font-semibold text-gray-900">
-              E-Cell Email
-            </span>
-          </div>
+          <Logo size="small" />
           <button
             onClick={() => setSidebarOpen(false)}
             className="lg:hidden p-1 rounded-md text-gray-500 hover:text-gray-600"

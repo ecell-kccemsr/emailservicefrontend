@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { validateEmail } from "../utils/helpers";
 import Alert from "../components/common/Alert";
 import Loading from "../components/common/Loading";
+import Logo from "../components/common/Logo";
 
 const Login: React.FC = () => {
   const { login, isAuthenticated, isLoading, error } = useAuth();
@@ -78,17 +79,16 @@ const Login: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <div className="flex items-center justify-center">
-            <img
-              src="./logo1.png"
-              alt="E-Cell Logo"
-              className="h-16 w-16"
-            />
+          <div className="flex items-center justify-center mb-8">
+            <Logo size="large" showText={false} />
           </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
             E-Cell Email Service
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
+            K.C. College of Engineering
+          </p>
+          <p className="mt-1 text-center text-xs text-gray-500">
             Sign in to your admin account
           </p>
         </div>
