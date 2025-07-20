@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Send, Users, Eye, X, Check, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Send, Users, Eye, X } from 'lucide-react';
 import { apiService } from '../services/api';
 import { Template, User } from '../types';
 
@@ -49,11 +49,29 @@ const SendEmail: React.FC = () => {
     fetchUsers();
   }, []);
 
+  const filterUsers = useCallback(() => {
+    let filtered = users;
+
+    if (formData.filterDepartment) {
+      filtered = filtered.filter(user => user.department === formData.filterDepartment);
+    }
+
+    if (formData.filterYear) {
+      filtered = filtered.filter(user => user.year === formData.filterYear);
+    }
+
+    if (formData.filterSubscribed) {
+      filtered = filtered.filter(user => user.isSubscribed);
+    }
+
+    setFilteredUsers(filtered);
+  }, [users, formData.filterDepartment, formData.filterYear, formData.filterSubscribed]);
+
   useEffect(() => {
     if (formData.recipientType === 'filtered') {
       filterUsers();
     }
-  }, [formData.filterDepartment, formData.filterYear, formData.filterSubscribed, users]);
+  }, [formData.recipientType, filterUsers]);
 
   const fetchTemplates = async () => {
     try {
@@ -77,24 +95,6 @@ const SendEmail: React.FC = () => {
     } catch (error) {
       console.error('Failed to fetch users:', error);
     }
-  };
-
-  const filterUsers = () => {
-    let filtered = users;
-
-    if (formData.filterDepartment) {
-      filtered = filtered.filter(user => user.department === formData.filterDepartment);
-    }
-
-    if (formData.filterYear) {
-      filtered = filtered.filter(user => user.year === formData.filterYear);
-    }
-
-    if (formData.filterSubscribed) {
-      filtered = filtered.filter(user => user.isSubscribed);
-    }
-
-    setFilteredUsers(filtered);
   };
 
   const handleTemplateSelect = (templateId: string) => {

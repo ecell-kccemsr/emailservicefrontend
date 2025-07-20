@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Search, Calendar, Filter, Eye, Download, Mail, CheckCircle, XCircle, Clock } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Search, Eye, Download, Mail, CheckCircle, XCircle, Clock } from 'lucide-react';
 import { apiService } from '../services/api';
 import { EmailLog } from '../types';
 
@@ -21,7 +21,7 @@ const EmailLogs: React.FC = () => {
   // Preview modal
   const [previewLog, setPreviewLog] = useState<EmailLog | null>(null);
 
-  const fetchEmailLogs = async () => {
+  const fetchEmailLogs = useCallback(async () => {
     try {
       setLoading(true);
       const params = {
@@ -43,11 +43,11 @@ const EmailLogs: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, campaignFilter, templateFilter, statusFilter, startDate, endDate]);
 
   useEffect(() => {
     fetchEmailLogs();
-  }, [currentPage, campaignFilter, templateFilter, statusFilter, startDate, endDate]);
+  }, [fetchEmailLogs]);
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
@@ -61,21 +61,6 @@ const EmailLogs: React.FC = () => {
         return 'text-yellow-600 bg-yellow-100';
       default:
         return 'text-gray-600 bg-gray-100';
-    }
-  };
-
-  const getStatusIcon = (status: string) => {
-    switch (status.toLowerCase()) {
-      case 'sent':
-      case 'delivered':
-        return <CheckCircle className="h-4 w-4" />;
-      case 'failed':
-      case 'bounced':
-        return <XCircle className="h-4 w-4" />;
-      case 'pending':
-        return <Clock className="h-4 w-4" />;
-      default:
-        return <Mail className="h-4 w-4" />;
     }
   };
 

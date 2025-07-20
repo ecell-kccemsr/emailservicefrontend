@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Plus, Search, Edit, Trash2, Copy, Eye, Image } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Plus, Search, Edit, Trash2, Copy } from 'lucide-react';
 import { apiService } from '../services/api';
-import { Template, Placeholder } from '../types';
+import { Template } from '../types';
 
 interface TemplateFormData {
   name: string;
@@ -40,7 +40,7 @@ const Templates: React.FC = () => {
 
   const templateTypes: TemplateFormData['type'][] = ['welcome', 'event_invitation', 'thank_you', 'custom'];
 
-  const fetchTemplates = async () => {
+  const fetchTemplates = useCallback(async () => {
     try {
       setLoading(true);
       const params = {
@@ -60,11 +60,11 @@ const Templates: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, searchTerm, typeFilter, activeFilter]);
 
   useEffect(() => {
     fetchTemplates();
-  }, [currentPage, searchTerm, typeFilter, activeFilter]);
+  }, [fetchTemplates]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

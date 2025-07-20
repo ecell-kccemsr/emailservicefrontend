@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Plus, Search, Filter, Edit, Trash2, Mail, Download } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Plus, Search, Edit, Trash2, Download } from 'lucide-react';
 import { apiService } from '../services/api';
 import { User } from '../types';
 
@@ -40,7 +40,7 @@ const Users: React.FC = () => {
   const departments = ['Computer Engineering', 'Information Technology', 'Electronics', 'Mechanical', 'Civil'];
   const years = ['FE', 'SE', 'TE', 'BE'];
 
-    const fetchUsers = async () => {
+    const fetchUsers = useCallback(async () => {
     try {
       setLoading(true);
       
@@ -76,11 +76,11 @@ const Users: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, searchTerm, departmentFilter, yearFilter, subscribedFilter]);
 
   useEffect(() => {
     fetchUsers();
-  }, [currentPage, searchTerm, departmentFilter, yearFilter, subscribedFilter]);
+  }, [fetchUsers]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Save, TestTube, Key, Mail, Cloud, Shield, Bell } from 'lucide-react';
+import { Save, TestTube, Mail, Cloud, Shield, Bell } from 'lucide-react';
 import { apiService } from '../services/api';
 
 interface SMTPSettings {
