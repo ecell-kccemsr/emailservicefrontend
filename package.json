@@ -1,0 +1,28 @@
+{
+  "name": "ecell-email-service",
+  "version": "1.0.0",
+  "description": "Email service management system for E-Cell, K.C. College of Engineering",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "start:backend": "cd backend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "email",
+    "service",
+    "ecell",
+    "kccoe",
+    "bulk-email",
+    "templates"
+  ],
+  "author": "E-Cell, K.C. College of Engineering",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
