@@ -65,7 +65,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200">
           <div className="flex items-center space-x-2">
             <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">E</span>
+              <img
+                src="./logo1.png"
+                alt="E-Cell Logo"
+                className="h-12 w-12"
+              />
             </div>
             <span className="text-lg font-semibold text-gray-900">
               E-Cell Email

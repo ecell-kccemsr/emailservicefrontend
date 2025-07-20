@@ -79,7 +79,11 @@ const Login: React.FC = () => {
       <div className="max-w-md w-full space-y-8">
         <div>
           <div className="mx-auto h-16 w-16 flex items-center justify-center bg-blue-600 rounded-full">
-            <span className="text-2xl font-bold text-white">E</span>
+            <img
+              src="./logo1.png"
+              alt="E-Cell Logo"
+              className="h-12 w-12"
+            />
           </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             E-Cell Email Service
@@ -172,7 +176,7 @@ const Login: React.FC = () => {
 
         <div className="mt-8 text-center">
           <p className="text-xs text-gray-500">
-            © 2024 E-Cell, K.C. College of Engineering. All rights reserved.
+            © 2025 E-Cell, K.C. College of Engineering. All rights reserved.
           </p>
         </div>
       </div>
