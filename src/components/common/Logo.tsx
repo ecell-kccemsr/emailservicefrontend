@@ -42,7 +42,7 @@ const Logo: React.FC<LogoProps> = ({ size = 'medium', showText = true, className
             E-Cell Email
           </span>
           <span className="text-xs text-gray-500 font-medium">
-            KCCOE
+            KCCEMSR
           </span>
         </div>
       )}
