@@ -24,7 +24,7 @@ const Logo: React.FC<LogoProps> = ({ size = 'medium', showText = true, className
       <div className="relative">
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-2 shadow-lg">
           <img
-            src="/logo1.png"
+            src="/kcecell.png"
             alt="E-Cell Logo"
             className={`${sizeClasses[size]} object-contain filter brightness-0 invert`}
             style={{ 
